@@ -19,10 +19,13 @@ const app = express();
 
 // connect DB
 const connectDatabase = require('./db/connect');
-// const authenticateUser = require('./middlewares/authentication');
 
 // routes
-const orderRouter = require('./routers/orderRouter');
+const menuItemRoute = require('./routes/menuItemRouter');
+const authRoute = require('./routes/authRouter');
+const userRoute = require('./routes/userRouter');
+const tableRoute = require('./routes/tableRouter');
+const reservationRoute = require('./routes/reservationRouter');
 
 // error handler
 const notFoundMiddleware = require('./middlewares/not-found');
@@ -38,14 +41,19 @@ app.use(mongoSanitize())
 
 
 app.get('/', (req, res) => {
-    res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
+    res.send('<h1>Restaurant Booking API</h1><a href="/api-docs">Documentation</a>');
 });
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 
 
 // routes
-app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/auth', authRoute);
+app.use('/api/v1/users', userRoute);
+app.use('/api/v1/menu', menuItemRoute);
+app.use('/api/v1/tables', tableRoute);
+app.use('/api/v1/reservations', reservationRoute);
+
 
 
 
