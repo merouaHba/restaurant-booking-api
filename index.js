@@ -26,6 +26,7 @@ const authRoute = require('./routes/authRouter');
 const userRoute = require('./routes/userRouter');
 const tableRoute = require('./routes/tableRouter');
 const reservationRoute = require('./routes/reservationRouter');
+const reviewRoute = require('./routes/reviewRouter');
 
 // error handler
 const notFoundMiddleware = require('./middlewares/not-found');
@@ -53,6 +54,7 @@ app.use('/api/v1/users', userRoute);
 app.use('/api/v1/menu', menuItemRoute);
 app.use('/api/v1/tables', tableRoute);
 app.use('/api/v1/reservations', reservationRoute);
+app.use('/api/v1/reviews', reviewRoute);
 
 
 
